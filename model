@@ -1,0 +1,15 @@
+import os
+from huggingface_hub.inference_api import HuggingFaceInferenceAPI
+
+# Set the model and token
+model = "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
+token = os.environ["HUGGINGFACE_TOKEN"]
+
+# Initialize the Hugging Face Inference API client
+inference = HuggingFaceInferenceAPI(repo_id=model, token=token, max_new_tokens=100)
+
+# Make an inference request
+prompt = "What is the capital of France?"
+response = inference(prompt)
+
+print(response)
